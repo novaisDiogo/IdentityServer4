@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -12,7 +13,7 @@ namespace MvcClient
 {
     public class Startup
     {
-       public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddAuthentication(config =>
             {
@@ -20,7 +21,8 @@ namespace MvcClient
                 config.DefaultChallengeScheme = "oidc";
             })
                 .AddCookie("Cookie")
-                .AddOpenIdConnect("oidc", config => {
+                .AddOpenIdConnect("oidc", config =>
+                {
                     config.Authority = "https://localhost:44376/";
                     config.ClientId = "client_id_mvc";
                     config.ClientSecret = "client_secret_mvc";
