@@ -67,11 +67,16 @@ namespace IdentityServer
                     AllowedGrantTypes = GrantTypes.Implicit,
 
                     RedirectUris = { "https://localhost:44305/Home/signin" },
+                    AllowedCorsOrigins = { "https://localhost:44305" },
 
                     AllowedScopes = {
                         IdentityServerConstants.StandardScopes.OpenId,
                         "ApiOne",
+                        "ApiTwo",
+                        "rc.scope",
                     },
+
+                    AccessTokenLifetime = 1,
 
                     AllowAccessTokensViaBrowser = true,
                     RequireConsent = false,
